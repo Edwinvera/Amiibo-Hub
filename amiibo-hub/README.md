@@ -1,68 +1,168 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Amiibo-Hub
 
-## Available Scripts
+**AmiiboHub** Search for release dates, images and other info on your favorite Nintendo characters. Amiibo's are not only collectible figurines but they are also highly functional, having the ability to unlock features that enhance your gameplay.
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+### Wireframes
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[https://imgur.com/AdOQTNA](url)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Homepage
 
-### `npm test`
+[https://imgur.com/1n8QqVg](url)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Amiibo Page
 
-### `npm run build`
+[https://imgur.com/8gpSLN9](url)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Amiibo Hub Mobile
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+[https://imgur.com/drFQ1zF](url)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Sample Data from console
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### MVP
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_**AmiiboHub** Will allow users to search and retrieve data on their favorite Nintendo characters. They'll have the ability to search by character or search by game series._
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### MVP Goals
 
-## Learn More
+- _Search for Amiibo via character name._
+- _Search for Amiibo via game series._
+- _Access to images and other links for more info._
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### MVP API
 
-### Code Splitting
+> Use the Data Section to define the API(s) you will be consuming for your project, inluding sample URL queries.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+|    API     | Quality Docs? | Documentation | Sample Query                            |
+| :--------: | :-----------: | :------------ | :-------------------------------------- |
+| AmiiboAPI |      yes      | _https://www.amiiboapi.com/docs/_ | _https://www.amiiboapi.com/api/amiibo/?name=mario_ |
 
-### Analyzing the Bundle Size
+Sample Query Results:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```json
+{
+	"amiibo": [
+		{
+			"amiiboSeries": "Super Smash Bros.",
+			"character": "Mario",
+			"gameSeries": "Super Mario",
+			"head": "00000000",
+			"image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png",
+			"name": "Mario",
+			"release": {
+				"au": "2014-11-29",
+				"eu": "2014-11-28",
+				"jp": "2014-12-06",
+				"na": "2014-11-21"
+			},
+			"tail": "00000002",
+			"type": "Figure"
+		},
+		{
+			"amiiboSeries": "Super Mario Bros.",
+			"character": "Mario",
+			"gameSeries": "Super Mario",
+			"head": "00000000",
+			"image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00340102.png",
+			"name": "Mario",
+			"release": {
+				"au": "2015-03-21",
+				"eu": "2015-03-20",
+				"jp": "2015-03-12",
+				"na": "2015-03-20"
+			},
+			"tail": "00340102",
+			"type": "Figure"
+		}
+	]
+}
+```
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### MVP Libraries & Dependencies
 
-### Advanced Configuration
+> Use this section to list the key supporting libraries and their role in the project.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+|   Library    | Description                                |
+| :----------: | :----------------------------------------- |
+|    React     | _Access to components to display features._ |
+| React Router | _Smooth transitions to Amiibo info pages._ |
 
-### Deployment
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### MVP Components
 
-### `npm run build` fails to minify
+```
+src
+|__ assets/
+      |__ data-tests
+      |__ fonts
+      |__ images
+      |__ wireframes
+|__ components/
+      |__ App.jsx
+      |__ Nav.jsx
+      |__ Amiibo.jsx
+      |__ Footer.jsx
+      |__ Dropdown.jsx
+      |__ Search.jsx
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<br>
+
+#### MVP Breakdown
+
+|  Component   |    Type    | state | props | hooks | Description                                |
+| :----------: | :--------: | :---: | :---: | :---: | :----------------------------------------- |
+|     App      |   class    |   y   |   n   |   n   | _Homepage displaying options for search._ |
+|     Nav      |   class    |   n   |   n   |   n   | _Links back to home or other parts of the site._ |
+|    Amiibo    | functional |   n   |   y   |   n   | _Page that displays Amiibo and stats._ |
+|    Footer    |   class    |   n   |   n   |   n   | _Links to different sites relating to nintendo._ |
+|   Dropdown   | functional |   y   |   n   |   n   | _Choice of search (character or game series)._ |
+|    Search    | functional |   y   |   n   |   n   | _Input for specific character or game series._ |
+
+<br>
+
+#### MVP Timeframes
+
+| Task             | Priority | Estimated Time  | Time Invested | Actual Time |
+| ---------------- | :------: | :------------:  | :-----------: | :---------: |
+| App              |    H     |     24 hrs      |     0 hrs     |     TBD     |
+| Nav & Footer     |    L     |     3 hrs       |     0 hrs     |     TBD     |
+| Amiibo           |    H     |     24 hrs      |     0 hrs     |     TBD     |
+| Dropdown & Search|    M     |     6 hrs       |     0 hrs     |     TBD     |
+| CSS              |    H     |     12 hrs      |     0 hrs     |     TBD     |
+| TOTAL            |          |     69 hrs      |     0 hrs     |     TBD     |
+
+<br>
+
+### Post-MVP
+
+- _Gallery of nintendo characters._
+- _Information on funtionality of Amiibo's._
+
+<br>
+
+***
+
+## Project Delivery
+
+> The Project Delivery section should be completed as your work on your project.
+
+### Code Showcase
+
+> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+
+### Code Issues & Resolutions
+
+> Use this section to list of all major issues encountered and their resolution, if you'd like.
