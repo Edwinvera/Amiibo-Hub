@@ -17,6 +17,7 @@ class GetAmiibo extends Component {
       })
       // console.log(amiiboRes.data)
     } catch (error) {
+      console.log(error, "Sorry! Please check your spelling and try again!")
     }
   }
 
@@ -30,9 +31,12 @@ class GetAmiibo extends Component {
     try {
       const amiiboChar = await axios('https://www.amiiboapi.com/api/amiibo/?name=' + this.state.searchText)
       this.setState({
-        amiiboResults: amiiboChar.data.amiibo
+        name: amiiboChar.data.amiibo[0].character,
+        amiiboSeries: amiiboChar.data.amiibo[0].amiiboSeries,
+        gameSeries: amiiboChar.data.amiibo[0].gameSeries,
+        release: amiiboChar.data.amiibo[0].release.na,
+        image: amiiboChar.data.amiibo[0].image
       })
-      console.log(amiiboChar.data)
     } catch (error) {
       console.log(error)
     }
@@ -41,7 +45,7 @@ class GetAmiibo extends Component {
   render() {
     return (
       <div>
-        <input type="text" onChange={this.handleChange} placeholder= "Search by Character or Game Series"/>
+        <input type="text" onChange={this.handleChange} placeholder= "Search by Character"/>
         <button onClick={this.handleSearch}>Get Started</button>
       </div>
     )

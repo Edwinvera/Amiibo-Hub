@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function AmiiboData(props) {
-  return (
-    <div>
-      
-    </div>
-  )
+class AmiiboData extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
+
+export default AmiiboData
