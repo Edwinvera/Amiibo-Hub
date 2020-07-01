@@ -1,18 +1,15 @@
 import React from 'react';
 import Navbar from './Navbar'
+import GetAmiibo from './GetAmiibo'
 import './App.css';
 
 function App() {
   return (
     <div>
       
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
 
-      <div>
-        <button className= 'start'>Get Started</button>
-      </div>
+      <GetAmiibo />
 
     </div>
   );
