@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from "react-router-dom";
 import Navbar from './Navbar'
 import GetAmiibo from './GetAmiibo'
 import Explore from './Explore'
@@ -9,11 +10,9 @@ function App() {
     <>
       <header>
         <h1>Amiibo Hub</h1>
-    
         <nav>
           <Navbar />
         </nav>
-
       </header>
     
       <main>

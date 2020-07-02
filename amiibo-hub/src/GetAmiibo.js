@@ -7,7 +7,7 @@ class GetAmiibo extends Component {
     super()
     this.state = {
       searchText: '',
-      loading: false
+      loading: false,
     }
   }
 
@@ -40,19 +40,27 @@ class GetAmiibo extends Component {
         release: amiiboChar.data.amiibo[0].release.na,
         image: amiiboChar.data.amiibo[0].image
       })
-      console.log(amiiboChar)
+      console.log(amiiboChar, this.state.name, amiiboChar.data.amiibo[0].character)
     } catch (error) {
       console.log("Incorrect spelling or character not recognized!")
     }
   }
 
   render() {
+    
     return (
       <div>
 
         <input type="text" onChange={this.handleChange} placeholder= "Search by Character"/>
         <button onClick={this.handleSearch}>Get Amiibo</button>
-
+        
+        <AmiiboData
+          name= {this.state.name}
+          aSeries= {this.state.amiiboSeries}
+          gSeries= {this.state.gameSeries}
+          releaseDate= {this.state.release}
+          charImage={this.state.image}
+        />
       </div>
     )
   }
