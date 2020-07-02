@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import axios from "axios"
+import AmiiboData from './AmiiboData'
 
 class GetAmiibo extends Component {
   constructor() {
     super()
     this.state = {
-      searchText: ''
+      searchText: '',
+      loading: false
     }
   }
 
@@ -13,40 +15,44 @@ class GetAmiibo extends Component {
     try {
       const amiiboRes = await axios('https://www.amiiboapi.com/api/amiibo/')
       this.setState({
-        amiiboRes: amiiboRes
-      })
-      // console.log(amiiboRes.data)
-    } catch (error) {
-      console.log(error, "Sorry! Please check your spelling and try again!")
-    }
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      searchText: e.target.value
-    })
-  }
-  
-  handleSearch = async () => {
-    try {
-      const amiiboChar = await axios('https://www.amiiboapi.com/api/amiibo/?name=' + this.state.searchText)
-      this.setState({
-        name: amiiboChar.data.amiibo[0].character,
-        amiiboSeries: amiiboChar.data.amiibo[0].amiiboSeries,
-        gameSeries: amiiboChar.data.amiibo[0].gameSeries,
-        release: amiiboChar.data.amiibo[0].release.na,
-        image: amiiboChar.data.amiibo[0].image
+        results: amiiboRes
       })
     } catch (error) {
       console.log(error)
     }
   }
 
+  handleChange = (event) => {
+    this.setState({
+      searchText: event.target.value
+    })
+  }
+  
+  handleSearch = async () => {
+    this.setState({loading: true})
+    try {
+      const amiiboChar = await axios('https://www.amiiboapi.com/api/amiibo/?name=' + this.state.searchText)
+      this.setState({
+        loading: false,
+        name: amiiboChar.data.amiibo[0].character,
+        amiiboSeries: amiiboChar.data.amiibo[0].amiiboSeries,
+        gameSeries: amiiboChar.data.amiibo[0].gameSeries,
+        release: amiiboChar.data.amiibo[0].release.na,
+        image: amiiboChar.data.amiibo[0].image
+      })
+      console.log(amiiboChar)
+    } catch (error) {
+      console.log("Incorrect spelling or character not recognized!")
+    }
+  }
+
   render() {
     return (
       <div>
+
         <input type="text" onChange={this.handleChange} placeholder= "Search by Character"/>
-        <button onClick={this.handleSearch}>Get Started</button>
+        <button onClick={this.handleSearch}>Get Amiibo</button>
+
       </div>
     )
   }

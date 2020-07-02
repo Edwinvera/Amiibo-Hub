@@ -1,17 +1,29 @@
 import React from 'react';
 import Navbar from './Navbar'
 import GetAmiibo from './GetAmiibo'
+import Explore from './Explore'
 import './App.css';
 
 function App() {
   return (
-    <div>
-      
-      <Navbar />
+    <>
+      <header>
+        <h1>Amiibo Hub</h1>
+    
+        <nav>
+          <Navbar />
+        </nav>
 
-      <GetAmiibo />
+      </header>
+    
+      <main>
+        <GetAmiibo />
+      </main>
 
-    </div>
+      <footer>
+        <Explore />
+      </footer>
+    </>
   );
 }
 
