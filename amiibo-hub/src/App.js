@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import GetAmiibo from './GetAmiibo'
 import Explore from './Explore'
 import Movie from "./Movie"
+import Tunes from "./Tunes"
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
       <footer>
         <Explore />
+        <Tunes />
       </footer>
     </>
   );
