@@ -11,16 +11,18 @@ class GetAmiibo extends Component {
     }
   }
 
-  async componentDidMount() {
-    try {
-      const amiiboRes = await axios('https://www.amiiboapi.com/api/amiibo/')
-      this.setState({
-        results: amiiboRes
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async componentDidMount() {
+  //   try {
+  //     const amiiboRes = await axios('https://www.amiiboapi.com/api/amiibo/')
+  //     this.setState({
+  //       results: amiiboRes.data.amiibo
+        
+  //     })
+  //     console.log(amiiboRes.data.amiibo)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   handleChange = (event) => {
     this.setState({

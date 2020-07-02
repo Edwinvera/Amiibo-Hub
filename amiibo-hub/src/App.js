@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import Navbar from './Navbar'
 import GetAmiibo from './GetAmiibo'
 import Explore from './Explore'
+import Tiles from "./Tiles"
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
       <footer>
         <Explore />
+        
       </footer>
     </>
   );
